@@ -1,6 +1,6 @@
-package ar.edu.utn.solucionHerencia.venta;
+package ar.edu.utn.regventas.venta;
 
-import ar.edu.utn.solucionHerencia.prenda.Prenda;
+import ar.edu.utn.regventas.prenda.Prenda;
 
 public class LineaDeVenta {
   private int cantidad;

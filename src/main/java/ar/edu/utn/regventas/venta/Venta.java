@@ -1,4 +1,4 @@
-package ar.edu.utn.solucionHerencia.venta;
+package ar.edu.utn.regventas.venta;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package ar.edu.utn.frba.dds.solucionHerencia;
+  package ar.edu.utn.frba.dds.regventas;
 
-import ar.edu.utn.solucionHerencia.prenda.*;
+import ar.edu.utn.regventas.prenda.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,25 +8,29 @@ public class PrendaTest {
 
   @Test
   public void seInstanciasLasPrendas() {
-    Prenda prenda = new Prenda("Remera", 1000);
+    Estado prendaNueva = new PrendaNueva();
+    Prenda prenda = new Prenda("Remera", 1000, prendaNueva);
     Assertions.assertEquals("Remera", prenda.getTipo());
   }
 
   @Test
   public void lasPrendasEnLiquidacionTienenPorcentajeDeDescuento() {
-    Prenda prenda = new PrendaLiquidacion("Remera", 1000, 50);
+    Estado prendaLiquidacion = new PrendaLiquidacion(50);
+    Prenda prenda = new Prenda("Remera", 1000, prendaLiquidacion);
     Assertions.assertEquals(500, prenda.getPrecio());
   }
 
   @Test
   public void lasPrendasEnPromocionTienenValorDeDescuento() {
-    Prenda prenda = new PrendaPromocion("Remera", 1000, 50);
+    Estado prendaPromocion = new PrendaPromocion(50);
+    Prenda prenda = new Prenda("Remera", 1000, prendaPromocion);
     Assertions.assertEquals(1000 - 50, prenda.getPrecio());
   }
 
   @Test
   public void lasPrendasNuevasDevuelvenPrecioBase() {
-    Prenda prenda = new PrendaNueva("Remera", 1000);
+    Estado prendaNueva = new PrendaNueva();
+    Prenda prenda = new Prenda("Remera", 1000, prendaNueva);
     Assertions.assertEquals(1000, prenda.getPrecio());
   }
 

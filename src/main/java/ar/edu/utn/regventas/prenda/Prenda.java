@@ -1,12 +1,14 @@
-package ar.edu.utn.solucionHerencia.prenda;
+package ar.edu.utn.regventas.prenda;
 
 public class Prenda {
   protected String tipo;
   protected float precioBase;
+  Estado estado;
 
-  public Prenda(String tipo,float precioBase) {
+  public Prenda(String tipo,float precioBase, Estado estado) {
     this.tipo = tipo;
     this.precioBase = precioBase;
+    this.estado = estado;
   }
 
   public String getTipo() {
@@ -14,6 +16,6 @@ public class Prenda {
   }
 
   public float getPrecio() {
-    return precioBase;
+    return estado.precioModificado(precioBase);
   }
 }
