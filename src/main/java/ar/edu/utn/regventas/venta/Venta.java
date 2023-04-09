@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Venta {
   private final List<LineaDeVenta> lineasDeVentas = new ArrayList<>();
-  private MetodosDePago metodoDePago = MetodosDePago.EFECTIVO;
+  private MetodoDePago metodoDePago;
   private int cantidadDeCuotas = 1;
   private final int coeficienteFijo;
   private final LocalDate fechaVenta;
@@ -19,7 +19,7 @@ public class Venta {
   public Venta(
       int coeficienteFijo,
       int cantidadDeCuotas,
-      MetodosDePago metodoDePago,
+      MetodoDePago metodoDePago,
       LocalDate fechaVenta
   ) {
     this.coeficienteFijo = coeficienteFijo;
@@ -36,7 +36,7 @@ public class Venta {
     this.cantidadDeCuotas = cantidadDeCuotas;
   }
 
-  public void setMetodoDePago(MetodosDePago metodoDePago) {
+  public void setMetodoDePago(MetodoDePago metodoDePago) {
     this.metodoDePago = metodoDePago;
   }
 
@@ -45,29 +45,14 @@ public class Venta {
   }
 
   public float precioTotal() {
-    if (lineasDeVentas.size() == 0) {
-      return 0.0f;
-    }
-
     return this.lineasDeVentas
         .stream()
         .map(LineaDeVenta::precioTotalLinea) // linea -> linea.precioTotalLinea()
         .reduce(0.0f, Float::sum); // (a, b) -> a + b
   }
 
-  public float recargoPorTarjeta() {
-    float porcentajeDeAumentoPorPrenda = 0.01f;
-    float recargoTotal = this.precioTotal() * porcentajeDeAumentoPorPrenda;
-    return recargoTotal + this.cantidadDeCuotas * this.coeficienteFijo;
-  }
-
   public float precioFinal() {
-    float precioFinal = this.precioTotal();
-
-    if(this.metodoDePago == MetodosDePago.TARJETA) {
-      precioFinal += recargoPorTarjeta();
-    }
-
-    return precioFinal;
+    float precioTotal = this.precioTotal();
+    return precioTotal + metodoDePago.recargo(precioTotal);
   }
 }

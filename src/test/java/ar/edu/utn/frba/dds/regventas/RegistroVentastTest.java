@@ -3,9 +3,11 @@ package ar.edu.utn.frba.dds.regventas;
 import ar.edu.utn.regventas.prenda.Estado;
 import ar.edu.utn.regventas.prenda.Prenda;
 import ar.edu.utn.regventas.prenda.PrendaNueva;
+import ar.edu.utn.regventas.venta.Efectivo;
 import ar.edu.utn.regventas.venta.LineaDeVenta;
-import ar.edu.utn.regventas.venta.MetodosDePago;
+import ar.edu.utn.regventas.venta.MetodoDePago;
 import ar.edu.utn.regventas.venta.RegistroVentas;
+import ar.edu.utn.regventas.venta.Tarjeta;
 import ar.edu.utn.regventas.venta.Venta;
 
 import org.junit.jupiter.api.Assertions;
@@ -25,10 +27,10 @@ public class RegistroVentastTest {
   Prenda otraPrenda = new Prenda("Pantalon", 300, prendaNueva);
   LineaDeVenta unaLinea =  new LineaDeVenta(unaPrenda, cantidadUnaPrenda);
   LineaDeVenta otraLinea = new LineaDeVenta(otraPrenda, cantidadOtraPrenda);
-
-  Venta  unaVenta = new Venta(coeficiente, cuotas, MetodosDePago.EFECTIVO, unaFecha);
-  Venta  dosVenta = new Venta(coeficiente, cuotas, MetodosDePago.EFECTIVO, unaFecha);
-  Venta tresVenta = new Venta(coeficiente, cuotas, MetodosDePago.EFECTIVO, otraFecha);
+  MetodoDePago efectivo = new Efectivo();
+  Venta  unaVenta = new Venta(coeficiente, cuotas, efectivo, unaFecha);
+  Venta  dosVenta = new Venta(coeficiente, cuotas, efectivo, unaFecha);
+  Venta tresVenta = new Venta(coeficiente, cuotas, efectivo, otraFecha);
 
   @Test
   public void elRegistroDeVentasMeDevuelveLasVentasDelDiaQueLePido() {
