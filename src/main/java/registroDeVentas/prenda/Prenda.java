@@ -1,11 +1,13 @@
-package ar.edu.utn.regventas.prenda;
+package registroDeVentas.prenda;
+
+import registroDeVentas.prenda.estados.Estado;
 
 public class Prenda {
   protected String tipo;
   protected float precioBase;
   Estado estado;
 
-  public Prenda(String tipo,float precioBase, Estado estado) {
+  public Prenda(String tipo, float precioBase, Estado estado) {
     this.tipo = tipo;
     this.precioBase = precioBase;
     this.estado = estado;
@@ -15,7 +17,7 @@ public class Prenda {
     return tipo;
   }
 
-  public float getPrecio() {
+  public float precio() {
     return estado.precioModificado(precioBase);
   }
 }

@@ -1,9 +1,9 @@
-package registroDeVentas.prenda;
+package registroDeVentas.prenda.estados;
 
-public class PrendaLiquidacion implements Estado{
+public class Liquidacion implements Estado {
   protected float porcentajeDeDescuento;
 
-  public PrendaLiquidacion(float porcentajeDeDescuento) {
+  public Liquidacion(float porcentajeDeDescuento) {
     this.porcentajeDeDescuento = porcentajeDeDescuento;
   }
 

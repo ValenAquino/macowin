@@ -1,15 +1,15 @@
-package registroDeVentas.prenda;
+package registroDeVentas.prenda.estados;
 
-public class PrendaPromocion implements Estado {
-  float descuento;
+public class Promocion implements Estado {
+  float montoDeDescuento;
 
-  public PrendaPromocion(float descuento) {
-    this.descuento = descuento;
+  public Promocion(float montoDeDescuento) {
+    this.montoDeDescuento = montoDeDescuento;
   }
 
   @Override
   public float precioModificado(float precioBase) {
-    return precioBase - this.descuento;
+    return precioBase - this.montoDeDescuento;
   }
 
 }
