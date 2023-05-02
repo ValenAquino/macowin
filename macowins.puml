@@ -44,14 +44,14 @@ class Venta {
   importeTotal()
 }
 
-class Tarjeta {
+class VentaConTarjeta {
   coeficienteFijo : float
   cantidadDeCuotas : float
   recargo()
   importeTotal()
 }
 
-Tarjeta -|> Venta
+VentaConTarjeta -|> Venta
 LineaDeVenta --> " * " Prenda
 Venta --> " * " LineaDeVenta
 
