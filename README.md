@@ -18,7 +18,7 @@
 * En un principio pensé en crear una super clase prenda y subclases dependiendo su estado (Nuevo, Liquidación, Promoción). Esta solución me impide que las prendas cambien de estado.
 
 
-* Por ello, decidí implementar el patrón de diseño strategy ya que el problema encajaba perfecto. Se necesitaba
+* Por ello, decidí implementar el patrón de diseño strategy ya que el problema encajaba perfecto. Se necesitaba diferenciar la "estrategía" de calculo de precio. 
 
 ### Métodos de pago
 
