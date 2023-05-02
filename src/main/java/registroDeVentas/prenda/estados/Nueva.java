@@ -1,4 +1,4 @@
-package ar.edu.utn.regventas.prenda;
+package registroDeVentas.prenda;
 
 public class PrendaNueva implements Estado {
   @Override

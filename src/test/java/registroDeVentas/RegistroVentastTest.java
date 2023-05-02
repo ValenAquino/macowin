@@ -1,14 +1,13 @@
 package ar.edu.utn.frba.dds.regventas;
 
-import ar.edu.utn.regventas.prenda.Estado;
-import ar.edu.utn.regventas.prenda.Prenda;
-import ar.edu.utn.regventas.prenda.PrendaNueva;
-import ar.edu.utn.regventas.venta.Efectivo;
-import ar.edu.utn.regventas.venta.LineaDeVenta;
-import ar.edu.utn.regventas.venta.MetodoDePago;
-import ar.edu.utn.regventas.venta.RegistroVentas;
-import ar.edu.utn.regventas.venta.Tarjeta;
-import ar.edu.utn.regventas.venta.Venta;
+import registroDeVentas.prenda.estados.Estado;
+import registroDeVentas.prenda.Prenda;
+import registroDeVentas.prenda.estados.Nueva;
+import registroDeVentas.venta.Efectivo;
+import registroDeVentas.venta.LineaDeVenta;
+import registroDeVentas.venta.MetodoDePago;
+import registroDeVentas.venta.RegistroVentas;
+import registroDeVentas.venta.Venta;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,7 @@ public class RegistroVentastTest {
   int cantidadOtraPrenda = 1;
   LocalDate unaFecha = LocalDate.now();
   LocalDate otraFecha = LocalDate.now().plusDays(10);
-  Estado prendaNueva = new PrendaNueva();
+  Estado prendaNueva = new Nueva();
   Prenda unaPrenda = new Prenda("Remera", 500, prendaNueva);
   Prenda otraPrenda = new Prenda("Pantalon", 300, prendaNueva);
   LineaDeVenta unaLinea =  new LineaDeVenta(unaPrenda, cantidadUnaPrenda);
