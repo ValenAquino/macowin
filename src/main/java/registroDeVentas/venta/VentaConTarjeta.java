@@ -2,12 +2,12 @@ package registroDeVentas.venta;
 
 import java.time.LocalDate;
 
-public class Tarjeta extends Venta {
+public class VentaConTarjeta extends Venta {
   int coeficienteFijo;
   int cuotas;
   float factorRecargo = 0.01f;
 
-  public Tarjeta(LocalDate fecha, int coefFijo, int cuotas) {
+  public VentaConTarjeta(LocalDate fecha, int coefFijo, int cuotas) {
     super(fecha);
     this.coeficienteFijo = coefFijo;
     this.cuotas = cuotas;

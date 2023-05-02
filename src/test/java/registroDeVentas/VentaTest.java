@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import registroDeVentas.prenda.estados.Estado;
 import registroDeVentas.prenda.Prenda;
 import registroDeVentas.prenda.estados.Nueva;
-import registroDeVentas.venta.Tarjeta;
+import registroDeVentas.venta.VentaConTarjeta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -58,7 +58,7 @@ public class VentaTest {
     float recargoTarjeta = coeficienteFijo * cuotas + importeLineas * 0.01f;
     float importeTotal = recargoTarjeta + importeLineas;
 
-    Tarjeta ventaConTarjeta = new Tarjeta(this.unaFecha, coeficienteFijo, cuotas);
+    VentaConTarjeta ventaConTarjeta = new VentaConTarjeta(this.unaFecha, coeficienteFijo, cuotas);
     ventaConTarjeta.agregarLineaDeVenta(unaLinea);
     ventaConTarjeta.agregarLineaDeVenta(otraLinea);
 
