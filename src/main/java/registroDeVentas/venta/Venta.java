@@ -1,4 +1,4 @@
-package ar.edu.utn.regventas.venta;
+package registroDeVentas.venta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,25 +6,9 @@ import java.time.LocalDate;
 
 public class Venta {
   private final List<LineaDeVenta> lineasDeVentas = new ArrayList<>();
-  private MetodoDePago metodoDePago;
-  private int cantidadDeCuotas = 1;
-  private final int coeficienteFijo;
   private final LocalDate fechaVenta;
 
-  public Venta(int coeficienteFijo, LocalDate fechaVenta) {
-    this.coeficienteFijo = coeficienteFijo;
-    this.fechaVenta = fechaVenta;
-  }
-
-  public Venta(
-      int coeficienteFijo,
-      int cantidadDeCuotas,
-      MetodoDePago metodoDePago,
-      LocalDate fechaVenta
-  ) {
-    this.coeficienteFijo = coeficienteFijo;
-    this.cantidadDeCuotas = cantidadDeCuotas;
-    this.metodoDePago = metodoDePago;
+  public Venta(LocalDate fechaVenta) {
     this.fechaVenta = fechaVenta;
   }
 
@@ -32,27 +16,15 @@ public class Venta {
     return fechaVenta;
   }
 
-  public void setCantidadDeCuotas(int cantidadDeCuotas) {
-    this.cantidadDeCuotas = cantidadDeCuotas;
-  }
-
-  public void setMetodoDePago(MetodoDePago metodoDePago) {
-    this.metodoDePago = metodoDePago;
-  }
-
-  public void agregarLinea(LineaDeVenta nuevaLinea) {
+  public void agregarLineaDeVenta(LineaDeVenta nuevaLinea) {
     this.lineasDeVentas.add(nuevaLinea);
   }
 
-  public float precioTotal() {
-    return this.lineasDeVentas
-        .stream()
-        .map(LineaDeVenta::precioTotalLinea) // linea -> linea.precioTotalLinea()
-        .reduce(0.0f, Float::sum); // (a, b) -> a + b
-  }
-
-  public float precioFinal() {
-    float precioTotal = this.precioTotal();
-    return precioTotal + metodoDePago.recargo(precioTotal);
+  public float importeTotal() {
+    // mapeeo a Double porque no se puede a float directamente
+    // por eso casteo a float
+    return (float) this.lineasDeVentas.stream()
+        .mapToDouble(LineaDeVenta::importe) // linea -> linea.precioTotalLinea()
+        .sum();
   }
 }

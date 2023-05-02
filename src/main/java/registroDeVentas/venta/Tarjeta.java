@@ -1,18 +1,26 @@
-package ar.edu.utn.regventas.venta;
+package registroDeVentas.venta;
 
-public class Tarjeta implements MetodoDePago {
+import java.time.LocalDate;
+
+public class Tarjeta extends Venta {
   int coeficienteFijo;
-  int cantidadDeCuotas;
-  float factorAumento = 0.01f;
+  int cuotas;
+  float factorRecargo = 0.01f;
 
-  public Tarjeta(int coeficienteFijo, int cantidadCuotas) {
-    this.coeficienteFijo = coeficienteFijo;
-    this.cantidadDeCuotas = cantidadCuotas;
+  public Tarjeta(LocalDate fecha, int coefFijo, int cuotas) {
+    super(fecha);
+    this.coeficienteFijo = coefFijo;
+    this.cuotas = cuotas;
+  }
+
+  public float recargo(float precioTotal) {
+    return this.cuotas * this.coeficienteFijo + factorRecargo * precioTotal;
   }
 
   @Override
-  public float recargo(float precioTotal) {
-    return this.cantidadDeCuotas * this.coeficienteFijo + factorAumento * precioTotal;
+  public float importeTotal() {
+    float precioTotal = super.importeTotal();
+    return precioTotal + this.recargo(precioTotal);
   }
 
 }

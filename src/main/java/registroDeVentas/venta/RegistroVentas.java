@@ -1,4 +1,4 @@
-package ar.edu.utn.regventas.venta;
+package registroDeVentas.venta;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -25,7 +25,7 @@ public class RegistroVentas {
 
   public float gananciasEnFecha(LocalDate fecha) {
     return this.ventasEnFecha(fecha).stream()
-        .map(Venta::precioFinal)
+        .map(Venta::importeTotal)
         .reduce(0.0f, Float::sum);
   }
 
