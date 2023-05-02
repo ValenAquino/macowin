@@ -1,0 +1,66 @@
+@startuml Macowins
+
+!theme crt-green
+
+class Prenda {
+  tipo : String
+  estado : Estado
+  precioBase : float
+  precio()
+}
+
+interface Estado {
+  precioModificado()
+}
+
+class Nueva {
+  precioModificado()
+}
+
+class Liquidacion {
+  porcentajeDescuento
+  precioModificado()
+}
+
+class Promocion {
+  montoDeDescuento : float
+  precioModificado()
+}
+
+Estado <- Prenda
+Estado <|.. Nueva
+Estado <|.. Liquidacion
+Estado <|.. Promocion
+
+class LineaDeVenta {
+  prenda : Prenda 
+  cantidad : int
+  importe()
+} 
+
+class Venta {
+  lineasDeVenta : List<LineaDeVenta>
+  fecha : LocalDate 
+  importeTotal()
+}
+
+class Tarjeta {
+  coeficienteFijo : float
+  cantidadDeCuotas : float
+  recargo()
+  importeTotal()
+}
+
+Tarjeta -|> Venta
+LineaDeVenta --> " * " Prenda
+Venta --> " * " LineaDeVenta
+
+class RegistroDeVentas {
+  gananciasEnFecha(LocalDate fecha)
+  ventasEnFecha(LocalDate fecha)
+  ventas : List<Venta>
+}
+
+RegistroDeVentas --> " * " Venta
+
+@enduml
