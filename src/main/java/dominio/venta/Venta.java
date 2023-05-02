@@ -1,8 +1,8 @@
-package registroDeVentas.venta;
+package dominio.venta;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
 
 public class Venta {
   private final List<LineaDeVenta> lineasDeVentas = new ArrayList<>();

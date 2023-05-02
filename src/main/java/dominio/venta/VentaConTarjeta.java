@@ -1,4 +1,4 @@
-package registroDeVentas.venta;
+package dominio.venta;
 
 import java.time.LocalDate;
 

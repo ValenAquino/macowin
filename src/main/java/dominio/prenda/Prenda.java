@@ -1,6 +1,6 @@
-package registroDeVentas.prenda;
+package dominio.prenda;
 
-import registroDeVentas.prenda.estados.Estado;
+import dominio.prenda.estados.Estado;
 
 public class Prenda {
   protected String tipo;

@@ -1,4 +1,4 @@
-package registroDeVentas.prenda.estados;
+package dominio.prenda.estados;
 
 public class Nueva implements Estado {
   @Override

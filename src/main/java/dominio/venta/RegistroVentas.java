@@ -1,7 +1,7 @@
-package registroDeVentas.venta;
+package dominio.venta;
 
-import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class RegistroVentas {

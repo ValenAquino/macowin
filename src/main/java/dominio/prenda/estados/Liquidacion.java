@@ -1,11 +1,7 @@
-package registroDeVentas.prenda.estados;
+package dominio.prenda.estados;
 
 public class Liquidacion implements Estado {
-  protected float porcentajeDeDescuento;
-
-  public Liquidacion(float porcentajeDeDescuento) {
-    this.porcentajeDeDescuento = porcentajeDeDescuento;
-  }
+  protected float porcentajeDeDescuento = 50;
 
   @Override
   public float precioModificado(float precioBase) {

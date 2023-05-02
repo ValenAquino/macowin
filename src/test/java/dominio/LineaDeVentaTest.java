@@ -1,12 +1,12 @@
-package registroDeVentas;
+package dominio;
 
-import registroDeVentas.prenda.estados.Estado;
-import registroDeVentas.prenda.Prenda;
+import dominio.prenda.estados.Estado;
+import dominio.prenda.Prenda;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import registroDeVentas.prenda.estados.Nueva;
-import registroDeVentas.venta.LineaDeVenta;
+import dominio.prenda.estados.Nueva;
+import dominio.venta.LineaDeVenta;
 
 public class LineaDeVentaTest {
 

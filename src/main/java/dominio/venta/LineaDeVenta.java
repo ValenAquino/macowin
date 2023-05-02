@@ -1,6 +1,6 @@
-package registroDeVentas.venta;
+package dominio.venta;
 
-import registroDeVentas.prenda.Prenda;
+import dominio.prenda.Prenda;
 
 public class LineaDeVenta {
   private final int cantidad;

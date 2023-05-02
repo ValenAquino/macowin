@@ -1,15 +1,15 @@
-package registroDeVentas;
+package dominio;
 
 import org.junit.jupiter.api.BeforeEach;
-import registroDeVentas.prenda.estados.Estado;
-import registroDeVentas.prenda.Prenda;
-import registroDeVentas.prenda.estados.Nueva;
-import registroDeVentas.venta.VentaConTarjeta;
+import dominio.prenda.estados.Estado;
+import dominio.prenda.Prenda;
+import dominio.prenda.estados.Nueva;
+import dominio.venta.VentaConTarjeta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import registroDeVentas.venta.LineaDeVenta;
-import registroDeVentas.venta.Venta;
+import dominio.venta.LineaDeVenta;
+import dominio.venta.Venta;
 import java.time.LocalDate;
 
 public class VentaTest {

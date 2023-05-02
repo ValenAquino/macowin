@@ -1,4 +1,4 @@
-package registroDeVentas.prenda.estados;
+package dominio.prenda.estados;
 
 public class Promocion implements Estado {
   float montoDeDescuento;
