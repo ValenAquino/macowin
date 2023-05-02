@@ -1,12 +1,11 @@
-  package ar.edu.utn.frba.dds.regventas;
+  package registroDeVentas;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import registroDeVentas.prenda.estados.Estado;
 import registroDeVentas.prenda.Prenda;
-import registroDeVentas.prenda.estados.Liquidacion;
-import registroDeVentas.prenda.estados.Nueva;
-import registroDeVentas.prenda.estados.Promocion;
+import registroDeVentas.prenda.estados.*;
 
   public class PrendaTest {
 

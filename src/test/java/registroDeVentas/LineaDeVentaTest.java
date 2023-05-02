@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.regventas;
+package registroDeVentas;
 
 import registroDeVentas.prenda.estados.Estado;
 import registroDeVentas.prenda.Prenda;
@@ -16,7 +16,7 @@ public class LineaDeVentaTest {
     Prenda prenda = new Prenda("Remera", 1000, prendaNueva);
     LineaDeVenta unaLinea = new LineaDeVenta(prenda, 5);
 
-    Assertions.assertEquals(5 * 1000, unaLinea.precioTotalLinea());
+    Assertions.assertEquals(5 * 1000, unaLinea.importe());
   }
 
 }

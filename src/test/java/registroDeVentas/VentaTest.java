@@ -1,10 +1,9 @@
-package ar.edu.utn.frba.dds.regventas;
+package registroDeVentas;
 
+import org.junit.jupiter.api.BeforeEach;
 import registroDeVentas.prenda.estados.Estado;
 import registroDeVentas.prenda.Prenda;
 import registroDeVentas.prenda.estados.Nueva;
-import registroDeVentas.venta.Efectivo;
-import registroDeVentas.venta.MetodoDePago;
 import registroDeVentas.venta.Tarjeta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,39 +13,56 @@ import registroDeVentas.venta.Venta;
 import java.time.LocalDate;
 
 public class VentaTest {
-  int cuotas = 1;
-  int coeficiente = 1;
-  int cantidadUnaPrenda = 2;
-  int cantidadOtraPrenda = 1;
-  LocalDate unaFecha = LocalDate.now();
-  Estado prendaNueva = new Nueva();
-  Prenda unaPrenda = new Prenda("Remera", 500, prendaNueva);
-  Prenda otraPrenda = new Prenda("Pantalon", 300, prendaNueva);
-  LineaDeVenta unaLinea = new LineaDeVenta(unaPrenda, cantidadUnaPrenda);
-  LineaDeVenta otraLinea = new LineaDeVenta(otraPrenda, cantidadOtraPrenda);
-  MetodoDePago efectivo = new Efectivo();
-  Venta unaVenta = new Venta(coeficiente, cuotas, efectivo, unaFecha);
+  LocalDate unaFecha;
+  Estado prendaNueva;
+  Prenda unaPrenda;
+  Prenda otraPrenda;
+  LineaDeVenta unaLinea;
+  LineaDeVenta otraLinea;
+
+  @BeforeEach
+  public void setUp() {
+    this.prendaNueva = new Nueva();
+    this.unaFecha = LocalDate.now();
+
+    int precioBaseUnaPrenda = 500;
+    this.unaPrenda = new Prenda("Remera", precioBaseUnaPrenda, prendaNueva);
+
+    int precioBaseOtraPrenda = 300;
+    this.otraPrenda = new Prenda("Pantalon", precioBaseOtraPrenda, prendaNueva);
+
+    int cantidadUnaPrenda = 2;
+    this.unaLinea = new LineaDeVenta(unaPrenda, cantidadUnaPrenda);
+
+    int cantidadOtraPrenda = 1;
+    this.otraLinea = new LineaDeVenta(otraPrenda, cantidadOtraPrenda);
+  }
 
   @Test
   public void elPrecioDeUnaVentaEnEfectivoEsLaSumaDelPrecioDeLasLineasDeVenta() {
-    float precioDeLasLineas = unaLinea.precioTotalLinea() + otraLinea.precioTotalLinea();
+    float precioDeLasLineas = unaLinea.importe() + otraLinea.importe();
 
-    unaVenta.agregarLinea(unaLinea);
-    unaVenta.agregarLinea(otraLinea);
+    Venta unaVenta = new Venta(unaFecha);
+    unaVenta.agregarLineaDeVenta(unaLinea);
+    unaVenta.agregarLineaDeVenta(otraLinea);
 
-    Assertions.assertEquals(precioDeLasLineas, unaVenta.precioFinal());
+    Assertions.assertEquals(precioDeLasLineas, unaVenta.importeTotal());
   }
 
   @Test
   public void elPrecioDeUnaVentaPagandoConTarjetaTieneRecargo() {
-    float precioDeLasLineas = unaLinea.precioTotalLinea() + otraLinea.precioTotalLinea();
-    float recargoPorTarjeta = coeficiente * cuotas + precioDeLasLineas * 0.01f;
+    int cuotas = 1;
+    int coeficienteFijo = 1;
 
-    unaVenta.setMetodoDePago(new Tarjeta(coeficiente, cuotas));
-    unaVenta.agregarLinea(unaLinea);
-    unaVenta.agregarLinea(otraLinea);
+    float importeLineas = unaLinea.importe() + otraLinea.importe();
+    float recargoTarjeta = coeficienteFijo * cuotas + importeLineas * 0.01f;
+    float importeTotal = recargoTarjeta + importeLineas;
 
-    Assertions.assertEquals(recargoPorTarjeta + precioDeLasLineas, unaVenta.precioFinal());
+    Tarjeta ventaConTarjeta = new Tarjeta(this.unaFecha, coeficienteFijo, cuotas);
+    ventaConTarjeta.agregarLineaDeVenta(unaLinea);
+    ventaConTarjeta.agregarLineaDeVenta(otraLinea);
+
+    Assertions.assertEquals(importeTotal, ventaConTarjeta.importeTotal());
   }
 
 }
